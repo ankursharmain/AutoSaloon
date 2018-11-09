@@ -58,7 +58,7 @@
             // 
             this.LoginUserNameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginUserNameTextbox.Location = new System.Drawing.Point(518, 172);
-            this.LoginUserNameTextbox.MaxLength = 100;
+            this.LoginUserNameTextbox.MaxLength = 200;
             this.LoginUserNameTextbox.Multiline = true;
             this.LoginUserNameTextbox.Name = "LoginUserNameTextbox";
             this.LoginUserNameTextbox.Size = new System.Drawing.Size(429, 35);

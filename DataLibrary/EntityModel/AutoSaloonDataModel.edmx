@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AutoSaloonDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Franchise">
+          <Key>
+            <PropertyRef Name="FranchiseId" />
+          </Key>
+          <Property Name="FranchiseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FranchiseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FranchiseDesc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="FranchiseImage" Type="image" />
+          <Property Name="FranchiseIsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="FranchisePackage">
+          <Key>
+            <PropertyRef Name="FranchisePackageId" />
+          </Key>
+          <Property Name="FranchisePackageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FranchiseId" Type="int" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="FranchiseProduct">
+          <Key>
+            <PropertyRef Name="FranchiseProductId" />
+          </Key>
+          <Property Name="FranchiseProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FranchiseId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="FranchiseUser">
+          <Key>
+            <PropertyRef Name="FranchiseUserId" />
+          </Key>
+          <Property Name="FranchiseUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FranchiseId" Type="int" Nullable="false" />
+          <Property Name="LoginId" Type="int" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="LoginDetail">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginEmail" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="LoginPassword" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="LoginPasswordSalt" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LoginPasswordEncryptType" Type="int" Nullable="false" />
+          <Property Name="LoginPasswordUpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="LoginUserFirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LoginUserLastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LoginUserMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginLocked" Type="bit" Nullable="false" />
+          <Property Name="LoginActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+          <Property Name="LoginUserFullName" Type="nvarchar" MaxLength="201" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PackageDesc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PackagePrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PackageMinDiscountPercentage" Type="int" />
+          <Property Name="PackageMaxDiscountPercentage" Type="nchar" MaxLength="10" />
+          <Property Name="PackageImage" Type="image" />
+          <Property Name="PackageIsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="PackageProduct">
+          <Key>
+            <PropertyRef Name="PackageProductId" />
+          </Key>
+          <Property Name="PackageProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDesc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ProductPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProductMinDiscountPercentage" Type="int" />
+          <Property Name="ProductMaxDiscountPercentage" Type="nchar" MaxLength="10" />
+          <Property Name="ProductImage" Type="image" />
+          <Property Name="ProductIsActive" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatorId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastModifierID" Type="int" Nullable="false" />
+          <Property Name="DeletedDate" Type="datetime" />
+          <Property Name="DeleterID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="AutoSaloonDataModelStoreContainer">
+          <EntitySet Name="Franchise" EntityType="Self.Franchise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FranchisePackage" EntityType="Self.FranchisePackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FranchiseProduct" EntityType="Self.FranchiseProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FranchiseUser" EntityType="Self.FranchiseUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginDetail" EntityType="Self.LoginDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageProduct" EntityType="Self.PackageProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoSaloonDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Franchise">
+          <Key>
+            <PropertyRef Name="FranchiseId" />
+          </Key>
+          <Property Name="FranchiseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FranchiseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FranchiseDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="FranchiseImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FranchiseIsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FranchisePackage">
+          <Key>
+            <PropertyRef Name="FranchisePackageId" />
+          </Key>
+          <Property Name="FranchisePackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FranchiseId" Type="Int32" Nullable="false" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FranchiseProduct">
+          <Key>
+            <PropertyRef Name="FranchiseProductId" />
+          </Key>
+          <Property Name="FranchiseProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FranchiseId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FranchiseUser">
+          <Key>
+            <PropertyRef Name="FranchiseUserId" />
+          </Key>
+          <Property Name="FranchiseUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FranchiseId" Type="Int32" Nullable="false" />
+          <Property Name="LoginId" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="LoginDetail">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPasswordSalt" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginPasswordEncryptType" Type="Int32" Nullable="false" />
+          <Property Name="LoginPasswordUpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginUserFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginUserLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LoginUserMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginLocked" Type="Boolean" Nullable="false" />
+          <Property Name="LoginActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+          <Property Name="LoginUserFullName" Type="String" MaxLength="201" FixedLength="false" Unicode="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="PackageId" />
+          </Key>
+          <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PackageDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PackagePrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="PackageMinDiscountPercentage" Type="Int32" />
+          <Property Name="PackageMaxDiscountPercentage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PackageImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PackageIsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PackageProduct">
+          <Key>
+            <PropertyRef Name="PackageProductId" />
+          </Key>
+          <Property Name="PackageProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProductMinDiscountPercentage" Type="Int32" />
+          <Property Name="ProductMaxDiscountPercentage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ProductImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductIsActive" Type="Boolean" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatorId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifierID" Type="Int32" Nullable="false" />
+          <Property Name="DeletedDate" Type="DateTime" Precision="3" />
+          <Property Name="DeleterID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="AutoSaloonDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Franchises" EntityType="Self.Franchise" />
+          <EntitySet Name="FranchisePackages" EntityType="Self.FranchisePackage" />
+          <EntitySet Name="FranchiseProducts" EntityType="Self.FranchiseProduct" />
+          <EntitySet Name="FranchiseUsers" EntityType="Self.FranchiseUser" />
+          <EntitySet Name="LoginDetails" EntityType="Self.LoginDetail" />
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <EntitySet Name="PackageProducts" EntityType="Self.PackageProduct" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoSaloonDataModelStoreContainer" CdmEntityContainer="AutoSaloonDataEntities">
+          <EntitySetMapping Name="Franchises">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.Franchise">
+              <MappingFragment StoreEntitySet="Franchise">
+                <ScalarProperty Name="FranchiseId" ColumnName="FranchiseId" />
+                <ScalarProperty Name="FranchiseName" ColumnName="FranchiseName" />
+                <ScalarProperty Name="FranchiseDesc" ColumnName="FranchiseDesc" />
+                <ScalarProperty Name="FranchiseImage" ColumnName="FranchiseImage" />
+                <ScalarProperty Name="FranchiseIsActive" ColumnName="FranchiseIsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FranchisePackages">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.FranchisePackage">
+              <MappingFragment StoreEntitySet="FranchisePackage">
+                <ScalarProperty Name="FranchisePackageId" ColumnName="FranchisePackageId" />
+                <ScalarProperty Name="FranchiseId" ColumnName="FranchiseId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FranchiseProducts">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.FranchiseProduct">
+              <MappingFragment StoreEntitySet="FranchiseProduct">
+                <ScalarProperty Name="FranchiseProductId" ColumnName="FranchiseProductId" />
+                <ScalarProperty Name="FranchiseId" ColumnName="FranchiseId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FranchiseUsers">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.FranchiseUser">
+              <MappingFragment StoreEntitySet="FranchiseUser">
+                <ScalarProperty Name="FranchiseUserId" ColumnName="FranchiseUserId" />
+                <ScalarProperty Name="FranchiseId" ColumnName="FranchiseId" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginDetails">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.LoginDetail">
+              <MappingFragment StoreEntitySet="LoginDetail">
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="LoginEmail" ColumnName="LoginEmail" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="LoginPasswordSalt" ColumnName="LoginPasswordSalt" />
+                <ScalarProperty Name="LoginPasswordEncryptType" ColumnName="LoginPasswordEncryptType" />
+                <ScalarProperty Name="LoginPasswordUpdateDate" ColumnName="LoginPasswordUpdateDate" />
+                <ScalarProperty Name="LoginUserFirstName" ColumnName="LoginUserFirstName" />
+                <ScalarProperty Name="LoginUserLastName" ColumnName="LoginUserLastName" />
+                <ScalarProperty Name="LoginUserMobile" ColumnName="LoginUserMobile" />
+                <ScalarProperty Name="LoginLocked" ColumnName="LoginLocked" />
+                <ScalarProperty Name="LoginActive" ColumnName="LoginActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+                <ScalarProperty Name="LoginUserFullName" ColumnName="LoginUserFullName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.Package">
+              <MappingFragment StoreEntitySet="Package">
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="PackageName" ColumnName="PackageName" />
+                <ScalarProperty Name="PackageDesc" ColumnName="PackageDesc" />
+                <ScalarProperty Name="PackagePrice" ColumnName="PackagePrice" />
+                <ScalarProperty Name="PackageMinDiscountPercentage" ColumnName="PackageMinDiscountPercentage" />
+                <ScalarProperty Name="PackageMaxDiscountPercentage" ColumnName="PackageMaxDiscountPercentage" />
+                <ScalarProperty Name="PackageImage" ColumnName="PackageImage" />
+                <ScalarProperty Name="PackageIsActive" ColumnName="PackageIsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PackageProducts">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.PackageProduct">
+              <MappingFragment StoreEntitySet="PackageProduct">
+                <ScalarProperty Name="PackageProductId" ColumnName="PackageProductId" />
+                <ScalarProperty Name="PackageId" ColumnName="PackageId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="AutoSaloonDataModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDesc" ColumnName="ProductDesc" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductMinDiscountPercentage" ColumnName="ProductMinDiscountPercentage" />
+                <ScalarProperty Name="ProductMaxDiscountPercentage" ColumnName="ProductMaxDiscountPercentage" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductIsActive" ColumnName="ProductIsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="LastModifierID" ColumnName="LastModifierID" />
+                <ScalarProperty Name="DeletedDate" ColumnName="DeletedDate" />
+                <ScalarProperty Name="DeleterID" ColumnName="DeleterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

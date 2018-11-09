@@ -7,6 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataLibrary.DataModel;
+using DataLibrary.EntityModel;
+using System.Configuration;
+using System.Net;
+using System.Text;
+using System.Web.Script.Serialization;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace AutoSaloonDesktop.UI
 {
@@ -22,6 +31,46 @@ namespace AutoSaloonDesktop.UI
         {
             if (ValidateControls(sender))
             {
+                LoginAction();
+
+            }
+        }
+
+        private void LoginAction()
+        {
+            LoginDataModel loginData = new LoginDataModel();
+            loginData.UserName = LoginUserNameTextbox.Text.Trim();
+            loginData.Password = LoginPasswordTextBox.Text.Trim();
+
+            string apiUrl = ConfigurationManager.AppSettings.Get("API_END_POINT"); //"http://localhost:26404/api/CustomerAPI";
+
+            //string inputJson = (new JavaScriptSerializer()).Serialize(loginData);
+            var inputJson = JsonConvert.SerializeObject(loginData);
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(apiUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            var buffer = System.Text.Encoding.UTF8.GetBytes(inputJson);
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = client.PostAsync("api/AutoSaloonAPI/Authenticate", byteContent).Result;
+            
+            if (response.IsSuccessStatusCode)
+            {
+                var Json = response.Content.ReadAsStringAsync().Result;//response.Content.ReadAsStringAsync();
+
+                LoginDetail loggedInUserDetails = (new JavaScriptSerializer()).Deserialize<List<LoginDetail>>(Json).FirstOrDefault();
+
+                if (loggedInUserDetails != null)
+                {
+
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Error Code" + response.StatusCode + " : Message - " + response.ReasonPhrase);
 
             }
         }
